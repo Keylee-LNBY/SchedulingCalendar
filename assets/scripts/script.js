@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    var presentDate = moment().format("MMMM D, YYYY<br>h:mm a");
-    var presentTime = moment().format("HH");
+    var currentDate = moment().format("MMMM D, YYYY<br>h:mm a");
+    var currentTime = moment().format("HH");
   
     var clockArr24 = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
     var clockArr = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7];
@@ -18,8 +18,7 @@ $(document).ready(function() {
       "seven"
     ];
   
-    $("#today").append(presentDate
-);
+    $("#today").append(currentDate);
   
     for (var i = 0; i < clockArr.length; i++) {
       var newRow = $("<row>");
@@ -52,16 +51,16 @@ $(document).ready(function() {
       var getId = parseInt($(this).attr("id"));
       console.log("id= " + getId);
   
-      if (parseInt(presentTime) < 9 || parseInt(presentTime) > 19) {
+      if (parseInt(currentTime) < 9 || parseInt(currentTime) > 19) {
         $(this).addClass("past");
       }
-      if (getId < parseInt(presentTime)) {
+      if (getId < parseInt(currentTime)) {
         $(this).addClass("past");
       }
-      if (getId > parseInt(presentTime)) {
+      if (getId > parseInt(currentTime)) {
         $(this).addClass("future");
       }
-      if (getId === parseInt(presentTime)) {
+      if (getId === parseInt(currentTime)) {
         $(this).addClass("present");
       }
     });
